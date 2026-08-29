@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="منشئ قوالب الاستراتيجيات التعليمية">
+  <title>منشئ قوالب الاستراتيجيات التعليمية</title>
+
+  <style>
+    :root {
+      --primary: #0e7490;
+      --primary-dark: #155e75;
+      --primary-light: #ecfeff;
+      --border: #cbd5e1;
+      --text: #1e293b;
+      --muted: #64748b;
+      --danger: #dc2626;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: Tahoma, Arial, "Noto Kufi Arabic", sans-serif;
+      background: #f1f5f9;
+      color: var(--text);
+    }
+
+    button, input, select { font: inherit; }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 38px 20px;
+      text-align: center;
+    }
+
+    .header-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255,255,255,.18);
+      font-size: 30px;
+    }
+
+    h1 { margin: 0 0 8px; font-size: clamp(24px, 5vw, 34px); }
+    .subtitle { margin: 0; color: #cffafe; }
+
+    .container {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .form-container { padding: 34px 0 50px; }
+
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.06);
+    }
+
+    .field { margin-bottom: 22px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      outline: none;
+      background: white;
+      color: var(--text);
+    }
+
+    input:focus, select:focus { border-color: var(--primary); }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .strategy-card {
+      min-height: 100px;
+      padding: 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      background: white;
+      text-align: right;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .strategy-card:hover { transform: translateY(-2px); border-color: #67e8f9; }
+    .strategy-card.selected {
+      border-color: var(--primary);
+      outline: 3px solid rgba(14,116,144,.18);
+      background: var(--primary-light);
+    }
+
+    .strategy-icon { display:block; font-size: 27px; margin-bottom: 7px; }
+    .strategy-name { font-weight: 700; }
+
+    .primary-button, .toolbar button {
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .primary-button {
+      width: 100%;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      margin-top: 8px;
+    }
+
+    .primary-button:hover { opacity: .92; }
+    .error { color: var(--danger); text-align: center; font-weight: 700; margin-top: 12px; }
+
+    .hidden { display: none !important; }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--primary-dark);
+    }
+
+    .toolbar .print-btn { background: white; color: var(--primary-dark); }
+    .toolbar .back-btn { background: #0e7490; color: white; }
+
+    .preview-wrap { padding: 24px 16px 50px; }
+
+    .template-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 18mm;
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 15px 40px rgba(15,23,42,.12);
+    }
+
+    .official-header {
+      border-bottom: 4px solid var(--primary);
+      padding-bottom: 15px;
+      margin-bottom: 16px;
+    }
+
+    .official-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .official-info {
+      font-size: 11px;
+      line-height: 1.8;
+      color: #475569;
+    }
+
+    .logo-placeholder {
+      width: 80px;
+      height: 58px;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .date-info { text-align: left; }
+
+    .school-name {
+      text-align: center;
+      color: var(--primary-dark);
+      font-size: 20px;
+      margin: 8px 0;
+    }
+
+    .management {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 10px;
+      color: #475569;
+    }
+
+    .teacher-bar {
+      background: #ecfeff;
+      border: 1px solid #a5f3fc;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .strategy-title {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .strategy-title span {
+      display: inline-block;
+      padding: 8px 28px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .student-info {
+      border-top: 2px solid #e2e8f0;
+      padding-top: 16px;
+      margin-top: 18px;
+    }
+
+    .student-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      font-size: 12px;
+    }
+
+    .dotted-line {
+      border-bottom: 2px dotted #94a3b8;
+      min-height: 27px;
+    }
+
+    .strategy-card:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid rgba(14,116,144,.35);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 800px) {
+      .template-page {
+        width: 100%;
+        min-height: auto;
+        padding: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .strategy-grid, .student-grid { grid-template-columns: 1fr; }
+      .card { padding: 18px; }
+      .official-row { flex-direction: column; }
+      .date-info { text-align: right; }
+      .toolbar { flex-wrap: wrap; }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body { background: white; }
+      .no-print, #form-section { display: none !important; }
+      #template-section { display: block !important; }
+      .preview-wrap { padding: 0; }
+      .template-page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        padding: 18mm;
+        border: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section id="form-section">
+    <header class="page-header">
+      <div class="header-icon" aria-hidden="true">📄</div>
+      <h1>منشئ قوالب الاستراتيجيات التعليمية</h1>
+      <p class="subtitle">أنشئي قالبًا جاهزًا للطباعة أو الحفظ بصيغة PDF</p>
+    </header>
+
+    <main class="container form-container">
+      <div class="card">
+        <form id="teacher-form">
+          <div class="field">
+            <label for="teacher-name">اسم المعلمة</label>
+            <input id="teacher-name" type="text" required autocomplete="name"
+                   placeholder="أدخلي اسمك الكامل">
+          </div>
+
+          <div class="field">
+            <label for="stage-select">المرحلة</label>
+            <select id="stage-select" required>
+              <option value="">اختاري المرحلة</option>
+              <option value="أول متوسط">أول متوسط</option>
+              <option value="ثاني متوسط">ثاني متوسط</option>
+              <option value="ثالث متوسط">ثالث متوسط</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="grade-select">الصف</label>
+            <select id="grade-select" required>
+              <option value="">اختاري الصف</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>اختاري الاستراتيجية</label>
+            <div class="strategy-grid" id="strategy-grid">
+              <button type="button" class="strategy-card" data-strategy="حل المشكلات بالمنظم">
+                <span class="strategy-icon">🧩</span>
+                <span class="strategy-name">حل المشكلات بالمنظم</span>
+              </button>
+              <button type="button" class="strategy-card" data-strategy="التعلم التعاوني">
+                <span class="strategy-icon">🤝</span>
+                <span class="strategy-name">التعلم التعاوني</span>
+              </button>
+              <button type="button" class="strategy-card" data-strategy="العصف الذهني">
+                <span class="strategy-icon">💡</span>
+                <span class="strategy-name">العصف الذهني</span>
+              </button>
+              <button type="button" class="strategy-card" data-strategy="الاستقصاء">
+                <span class="strategy-icon">🔍</span>
+                <span class="strategy-name">الاستقصاء</span>
+              </button>
+              <button type="button" class="strategy-card" data-strategy="قراءة الصور">
+                <span class="strategy-icon">🖼️</span>
+                <span class="strategy-name">قراءة الصور</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="primary-button" type="submit">إنشاء القالب</button>
+          <p id="form-error" class="error hidden" role="alert">يرجى اختيار استراتيجية.</p>
+        </form>
+      </div>
+    </main>
+  </section>
+
+  <section id="template-section" class="hidden">
+    <div class="toolbar no-print">
+      <button class="print-btn" type="button" id="print-button">🖨️ طباعة / حفظ PDF</button>
+      <button class="back-btn" type="button" id="back-button">↩️ رجوع</button>
+    </div>
+
+    <div class="preview-wrap">
+      <article class="template-page" aria-label="قالب الاستراتيجية">
+        <header class="official-header">
+          <div class="official-row">
+            <div class="official-info">
+              <div>المملكة العربية السعودية</div>
+              <div>وزارة التعليم</div>
+              <div>الإدارة العامة للتعليم بالمنطقة الشرقية</div>
+            </div>
+
+            <div class="logo-placeholder" aria-label="شعار وزارة التعليم">
+              وزارة<br>التعليم
+            </div>
+
+            <div class="official-info date-info">
+              <div id="tpl-date"></div>
+              <div id="tpl-day"></div>
+            </div>
+          </div>
+
+          <h2 class="school-name">اسم المدرسة</h2>
+
+          <div class="management">
+            <span>مديرة المدرسة: <strong>نورة بنت محمد العتيبي</strong></span>
+            <span>وكيلة الشؤون التعليمية: <strong>بنان بنت مريح عسيري</strong></span>
+          </div>
+        </header>
+
+        <div class="teacher-bar">
+          <span>المعلمة: <strong id="tpl-teacher"></strong></span>
+          <span>المرحلة: <strong id="tpl-stage"></strong></span>
+          <span>الصف: <strong id="tpl-grade"></strong></span>
+        </div>
+
+        <div class="strategy-title">
+          <span>استراتيجية <strong id="tpl-strategy-name"></strong></span>
+        </div>
+
+        <div id="strategy-content"></div>
+
+        <div class="student-info">
+          <div class="student-grid">
+            <div>
+              <span>اسم الطالبة:</span>
+              <div class="dotted-line"></div>
+            </div>
+            <div>
+              <span>الموضوع / الدرس:</span>
+              <div class="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    "use strict";
+
+    let chosenStrategy = "";
+
+    const formSection = document.getElementById("form-section");
+    const templateSection = document.getElementById("template-section");
+    const form = document.getElementById("teacher-form");
+    const error = document.getElementById("form-error");
+
+    document.querySelectorAll(".strategy-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        document.querySelectorAll(".strategy-card").forEach((item) => {
+          item.classList.remove("selected");
+          item.setAttribute("aria-pressed", "false");
+        });
+
+        card.classList.add("selected");
+        card.setAttribute("aria-pressed", "true");
+        chosenStrategy = card.dataset.strategy;
+        error.classList.add("hidden");
+      });
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (!chosenStrategy) {
+        error.classList.remove("hidden");
+        return;
+      }
+
+      const name = document.getElementById("teacher-name").value.trim();
+      const stage = document.getElementById("stage-select").value;
+      const grade = document.getElementById("grade-select").value;
+
+      document.getElementById("tpl-teacher").textContent = name;
+      document.getElementById("tpl-stage").textContent = stage;
+      document.getElementById("tpl-grade").textContent = grade;
+      document.getElementById("tpl-strategy-name").textContent = chosenStrategy;
+
+      const now = new Date();
+      const days = ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+
+      document.getElementById("tpl-day").textContent = "اليوم: " + days[now.getDay()];
+      document.getElementById("tpl-date").textContent =
+        "التاريخ: " + now.toLocaleDateString("ar-SA", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        });
+
+      renderStrategy(chosenStrategy);
+
+      formSection.classList.add("hidden");
+      templateSection.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("back-button").addEventListener("click", () => {
+      templateSection.classList.add("hidden");
+      formSection.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("print-button").addEventListener("click", () => {
+      window.print();
+    });
+
+    function renderStrategy(name) {
+            const container = document.getElementById('strategy-content');
+            let html = '';
+
+            if (name === 'حل المشكلات بالمنظم') {
+                html = `
+                <table class="w-full border-collapse text-sm">
+                    <tr><td class="border-2 border-cyan-700 bg-cyan-700 text-white font-bold p-3 text-center" colspan="2">حل المشكلات بالمنظم</td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2 w-1/3">١. تحديد المشكلة</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٢. جمع المعلومات</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٣. اقتراح الحلول</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٤. تقييم الحلول</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٥. الحل الأفضل</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                </table>`;
+            } else if (name === 'التعلم التعاوني') {
+                html = `
+                <div class="text-center text-sm text-gray-500 mb-3">حددي دورك في المجموعة واكتبي مهامك</div>
+                <div class="grid grid-cols-2 gap-4">
+                    ${['القائدة 👑','الكاتبة ✍️','المتحدثة 🎤','الميقاتية ⏱️'].map(role => `
+                    <div class="border-2 border-cyan-600 rounded-xl p-3">
+                        <div class="bg-cyan-700 text-white text-center rounded-lg py-1 font-bold mb-2">${role}</div>
+                        <p class="text-xs text-gray-500 mb-1">الاسم:</p><div class="dotted-line"></div>
+                        <p class="text-xs text-gray-500 mb-1 mt-2">المهام:</p><div class="dotted-line"></div><div class="dotted-line mt-1"></div>
+                    </div>`).join('')}
+                </div>
+                <div class="border-2 border-cyan-600 rounded-xl p-3 mt-4">
+                    <div class="bg-cyan-700 text-white text-center rounded-lg py-1 font-bold mb-2">ملخص عمل المجموعة</div>
+                    <div class="dotted-line"></div><div class="dotted-line mt-2"></div><div class="dotted-line mt-2"></div>
+                </div>`;
+            } else if (name === 'العصف الذهني') {
+                html = `
+                <div class="text-center text-sm text-gray-500 mb-3">اكتبي أفكارك خارج الصندوق! 💡</div>
+                <div class="flex justify-center mb-4">
+                    <div class="border-4 border-cyan-700 rounded-2xl px-8 py-4 bg-cyan-50 font-bold text-cyan-800 text-lg">الفكرة الرئيسية<div class="dotted-line mt-1"></div></div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    ${[1,2,3,4,5,6].map(i => `<div class="bubble">فكرة ${i}</div>`).join('')}
+                </div>
+                <div class="mt-4 border-2 border-cyan-600 rounded-xl p-3">
+                    <div class="font-semibold text-cyan-800 mb-2">✨ أفضل فكرة وسبب اختيارها:</div>
+                    <div class="dotted-line"></div><div class="dotted-line mt-2"></div>
+                </div>`;
+            } else if (name === 'الاستقصاء') {
+                html = `
+                <div class="space-y-3">
+                    ${[
+                        {n:'١',t:'السؤال / المشكلة',icon:'❓'},
+                        {n:'٢',t:'الفرضية (توقعي)',icon:'🤔'},
+                        {n:'٣',t:'جمع البيانات والأدلة',icon:'📊'},
+                        {n:'٤',t:'التحليل والتفسير',icon:'🔬'},
+                        {n:'٥',t:'النتيجة والاستنتاج',icon:'✅'}
+                    ].map(s => `
+                    <div class="step-box">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-cyan-700 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">${s.n}</span>
+                            <span class="font-semibold text-cyan-800">${s.icon} ${s.t}</span>
+                        </div>
+                        <div class="dotted-line"></div><div class="dotted-line mt-1"></div>
+                    </div>`).join('')}
+                </div>`;
+            } else if (name === 'قراءة الصور') {
+                html = `
+                <div class="border-2 border-cyan-600 rounded-xl p-3 mb-4">
+                    <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl h-40 flex items-center justify-center text-gray-400 text-lg">📷 الصق الصورة هنا</div>
+                </div>
+                <div class="space-y-3">
+                    ${[
+                        {q:'ماذا تشاهدين في الصورة؟', icon:'👁️'},
+                        {q:'ما الألوان والأشكال البارزة؟', icon:'🎨'},
+                        {q:'ما الرسالة التي توصلها الصورة؟', icon:'💭'},
+                        {q:'ما علاقة الصورة بالدرس؟', icon:'🔗'},
+                        {q:'رأيك الشخصي في الصورة:', icon:'⭐'}
+                    ].map(item => `
+                    <div class="step-box">
+                        <p class="font-semibold text-cyan-800 mb-1">${item.icon} ${item.q}</p>
+                        <div class="dotted-line"></div><div class="dotted-line mt-1"></div>
+                    </div>`).join('')}
+                </div>`;
+            }
+            container.innerHTML = html;
+        }
+  </script>
+</body>
+</html>
