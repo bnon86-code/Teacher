@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260828-05-5fe3063","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFLd8sKbwc,2","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Libre Baskerville":"YACgEUFdPdA,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YADLjI9qxTA,0","Nunito":"YACgEX8C5Gg,0","Oleo Script":"YACgEQQ14jI,0","Phantom Sans":"YAHO2E8Pb88,0","Playfair Display":"YACgEYmuCJE,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YADWjpfPmdk,0","Raleway":"YACgEVg3xZg,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Ubuntu":"YACgERDU--Q,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YADlN8CFZ8Q,0","ui-sans-serif":"YACkoN-xg4g,0"}}');</script><script src="/_sdk/50d846425a1e5082.telemetry_sdk.js" integrity="sha512-Otbex+ztlVbcEGql0rXGd/3E3ee/hqAntg6DeuUEMG6pIPbXGOSvZbFZVzknAXi1tH/itQ+ijEhOTr2aWj6CXg=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منشئ قوالب الاستراتيجيات</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+        * { font-family: 'Noto Kufi Arabic', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            #form-section { display: none !important; }
+            #template-section { display: block !important; }
+            .template-page { box-shadow: none !important; margin: 0 !important; border: none !important; }
+        }
+        .strategy-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .strategy-card:hover { transform: translateY(-4px); }
+        .strategy-card.selected {
+            ring: 3px;
+            outline: 3px solid #0e7490;
+            outline-offset: 2px;
+        }
+        .template-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+        }
+        .bubble {
+            border: 2px dashed #0e7490;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 11px;
+            padding: 8px;
+        }
+        .step-box {
+            border: 2px solid #0e7490;
+            border-radius: 12px;
+            padding: 12px;
+            min-height: 60px;
+        }
+        .dotted-line {
+            border-bottom: 2px dotted #94a3b8;
+            min-height: 28px;
+        }
+    </style>
+  <script src="/_sdk/b3bf9e8ac58e6ad6.data_sdk.js" type="text/javascript" integrity="sha512-otc1u9NYq9Ms5Jt//7vmhrrqR5CLPr8Jdgs6741gqniClfLMcfmC+jK/cKuQdhLv6G0esJ/FzaMS9tv0T/vj/Q=="></script>
+  <script src="/_sdk/a6de989e8af05ea5.resizing_sdk.js" type="text/javascript" integrity="sha512-cceAQMIleYr/3eg7o5WzN46w0HpgI1sxi+5kDUb7CmTjHEpgBtINDxtOpnNeUtujjui8NG0OSDgUMl0/E2lT2A=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full">
+  <!-- Form Section -->
+  <div id="form-section" class="w-full">
+   <header class="w-full py-8" style="background: linear-gradient(135deg, #0e7490, #155e75);">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+     <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 mb-4">
+      <i data-lucide="file-text" style="width:32px;height:32px;color:white"></i>
+     </div>
+     <h1 data-template-id="main-title" class="canva-text text-white font-bold mb-2"></h1>
+     <p data-template-id="main-subtitle" class="canva-text text-cyan-100"></p>
+    </div>
+   </header>
+   <main class="max-w-2xl mx-auto px-4 py-8">
+    <form id="teacher-form" class="space-y-6">
+     <!-- Teacher Name -->
+     <div>
+      <label data-template-id="label-name" class="canva-text block mb-2 font-semibold text-gray-700" for="teacher-name"></label> <input id="teacher-name" type="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-600 focus:outline-none text-lg" placeholder="أدخلي اسمك الكامل">
+     </div><!-- Stage -->
+     <div>
+      <label data-template-id="label-stage" class="canva-text block mb-2 font-semibold text-gray-700" for="stage-select"></label> <select id="stage-select" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-600 focus:outline-none text-lg bg-white"> <option value="">اختاري المرحلة</option> <option value="أول متوسط">أول متوسط</option> <option value="ثاني متوسط">ثاني متوسط</option> <option value="ثالث متوسط">ثالث متوسط</option> </select>
+     </div><!-- Grade -->
+     <div>
+      <label data-template-id="label-grade" class="canva-text block mb-2 font-semibold text-gray-700" for="grade-select"></label> <select id="grade-select" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-600 focus:outline-none text-lg bg-white"> <option value="">اختاري الصف</option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> </select>
+     </div><!-- Strategy Selection -->
+     <div>
+      <label data-template-id="label-strategy" class="canva-text block mb-3 font-semibold text-gray-700"></label>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="strategy-grid">
+       <button type="button" class="strategy-card p-4 rounded-xl border-2 border-gray-200 text-right" data-strategy="حل المشكلات بالمنظم" onclick="selectStrategy(this)"> <span class="text-2xl mb-2 block">🧩</span> <span class="font-semibold text-gray-800 block">حل المشكلات بالمنظم</span> </button> <button type="button" class="strategy-card p-4 rounded-xl border-2 border-gray-200 text-right" data-strategy="التعلم التعاوني" onclick="selectStrategy(this)"> <span class="text-2xl mb-2 block">🤝</span> <span class="font-semibold text-gray-800 block">التعلم التعاوني</span> </button> <button type="button" class="strategy-card p-4 rounded-xl border-2 border-gray-200 text-right" data-strategy="العصف الذهني" onclick="selectStrategy(this)"> <span class="text-2xl mb-2 block">💡</span> <span class="font-semibold text-gray-800 block">العصف الذهني</span> </button> <button type="button" class="strategy-card p-4 rounded-xl border-2 border-gray-200 text-right" data-strategy="الاستقصاء" onclick="selectStrategy(this)"> <span class="text-2xl mb-2 block">🔍</span> <span class="font-semibold text-gray-800 block">الاستقصاء</span> </button> <button type="button" class="strategy-card p-4 rounded-xl border-2 border-gray-200 text-right" data-strategy="قراءة الصور" onclick="selectStrategy(this)"> <span class="text-2xl mb-2 block">🖼️</span> <span class="font-semibold text-gray-800 block">قراءة الصور</span> </button>
+      </div><input type="hidden" id="selected-strategy" required>
+     </div><button data-template-id="generate-btn" type="submit" class="canva-button w-full py-4 rounded-xl text-white font-bold text-lg hover:opacity-90 transition"></button>
+     <p id="form-error" class="text-red-500 text-center hidden font-semibold">يرجى اختيار استراتيجية</p>
+    </form>
+   </main>
+  </div><!-- Template Section (hidden until generated) -->
+  <div id="template-section" class="hidden w-full">
+   <div class="no-print py-4 px-4 flex gap-3 justify-center sticky top-0 z-10" style="background:#155e75;">
+    <button data-template-id="print-button" type="button" onclick="window.print()" class="canva-button px-6 py-3 bg-white text-cyan-800 rounded-xl font-bold hover:bg-cyan-50 transition flex items-center gap-2" aria-label="طباعة أو حفظ القالب بصيغة PDF"> <i data-lucide="printer" style="width:20px;height:20px"></i><span data-template-id="print-button-label" class="canva-text">طباعة / حفظ PDF</span> </button> <button onclick="goBack()" class="px-6 py-3 bg-cyan-700 text-white rounded-xl font-bold hover:bg-cyan-600 transition flex items-center gap-2"> <i data-lucide="arrow-right" style="width:20px;height:20px"></i> رجوع </button>
+   </div>
+   <div class="flex justify-center py-6 px-4">
+    <div class="template-page bg-white shadow-2xl border border-gray-200 p-8" style="direction:rtl;">
+     <!-- Header -->
+     <div class="text-center border-b-4 border-cyan-700 pb-4 mb-4">
+      <div class="flex justify-between items-start mb-3">
+       <div class="text-right text-xs leading-relaxed text-gray-600">
+        <p>المملكة العربية السعودية</p>
+        <p>وزارة التعليم</p>
+        <p>الإدارة العامة للتعليم بالمنطقة الشرقية</p>
+       </div><img data-template-id="moe-logo" class="canva-image w-28 h-16 object-contain" loading="lazy">
+       <div class="text-left text-xs leading-relaxed text-gray-600">
+        <p id="tpl-date"></p>
+        <p id="tpl-day"></p>
+       </div>
+      </div>
+      <h2 data-template-id="school-name" class="canva-text font-bold text-cyan-800"></h2>
+      <div class="flex justify-center gap-8 mt-2 text-xs text-gray-600">
+       <span>مديرة المدرسة: <strong>نورة بنت محمد العتيبي</strong></span> <span>وكيلة الشؤون التعليمية: <strong>بنان بنت مريح عسيري</strong></span>
+      </div>
+     </div><!-- Teacher Info Bar -->
+     <div class="bg-cyan-50 rounded-xl p-3 mb-4 flex flex-wrap gap-4 text-sm border border-cyan-200">
+      <span>المعلمة: <strong id="tpl-teacher"></strong></span> <span>المرحلة: <strong id="tpl-stage"></strong></span> <span>الصف: <strong id="tpl-grade"></strong></span>
+     </div><!-- Strategy Title -->
+     <div class="text-center mb-4">
+      <div class="inline-block bg-cyan-700 text-white px-8 py-2 rounded-full font-bold text-lg">
+       استراتيجية <span id="tpl-strategy-name"></span>
+      </div>
+     </div><!-- Strategy Content Area -->
+     <div id="strategy-content" class="mb-6"></div><!-- Student Info -->
+     <div class="border-t-2 border-gray-200 pt-4 mt-auto">
+      <div class="grid grid-cols-2 gap-4 text-sm">
+       <div>
+        <span class="text-gray-500">اسم الطالبة:</span>
+        <div class="dotted-line mt-1"></div>
+       </div>
+       <div>
+        <span class="text-gray-500">الموضوع / الدرس:</span>
+        <div class="dotted-line mt-1"></div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="/_sdk/c6bcadf20ce5820f.editing_sdk.js" integrity="sha512-LVukVCTKnKSxy98w+wCVzDAxVXBG2vy32XblXlmJD9CPFnF2/FVc75CFngl41IdXcX3sVHJc9olw64zrPM/FIA=="></script>
+  <script>
+        lucide.createIcons();
+
+        let chosenStrategy = '';
+
+        function selectStrategy(el) {
+            document.querySelectorAll('.strategy-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            chosenStrategy = el.dataset.strategy;
+            document.getElementById('selected-strategy').value = chosenStrategy;
+            document.getElementById('form-error').classList.add('hidden');
+        }
+
+        document.getElementById('teacher-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!chosenStrategy) {
+                document.getElementById('form-error').classList.remove('hidden');
+                return;
+            }
+            const name = document.getElementById('teacher-name').value;
+            const stage = document.getElementById('stage-select').value;
+            const grade = document.getElementById('grade-select').value;
+
+            // Fill template
+            document.getElementById('tpl-teacher').textContent = name;
+            document.getElementById('tpl-stage').textContent = stage;
+            document.getElementById('tpl-grade').textContent = grade;
+            document.getElementById('tpl-strategy-name').textContent = chosenStrategy;
+
+            // Date
+            const now = new Date();
+            const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+            document.getElementById('tpl-day').textContent = 'اليوم: ' + days[now.getDay()];
+            document.getElementById('tpl-date').textContent = 'التاريخ: ' + now.toLocaleDateString('ar-SA', {year:'numeric',month:'long',day:'numeric'});
+
+            // Render strategy content
+            renderStrategy(chosenStrategy);
+
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('template-section').classList.remove('hidden');
+            lucide.createIcons();
+        });
+
+        function goBack() {
+            document.getElementById('template-section').classList.add('hidden');
+            document.getElementById('form-section').classList.remove('hidden');
+        }
+
+        function renderStrategy(name) {
+            const container = document.getElementById('strategy-content');
+            let html = '';
+
+            if (name === 'حل المشكلات بالمنظم') {
+                html = `
+                <table class="w-full border-collapse text-sm">
+                    <tr><td class="border-2 border-cyan-700 bg-cyan-700 text-white font-bold p-3 text-center" colspan="2">حل المشكلات بالمنظم</td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2 w-1/3">١. تحديد المشكلة</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٢. جمع المعلومات</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٣. اقتراح الحلول</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٤. تقييم الحلول</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                    <tr><td class="border-2 border-cyan-600 bg-cyan-50 font-semibold p-2">٥. الحل الأفضل</td><td class="border-2 border-cyan-600 p-2"><div class="dotted-line"></div><div class="dotted-line mt-2"></div></td></tr>
+                </table>`;
+            } else if (name === 'التعلم التعاوني') {
+                html = `
+                <div class="text-center text-sm text-gray-500 mb-3">حددي دورك في المجموعة واكتبي مهامك</div>
+                <div class="grid grid-cols-2 gap-4">
+                    ${['القائدة 👑','الكاتبة ✍️','المتحدثة 🎤','الميقاتية ⏱️'].map(role => `
+                    <div class="border-2 border-cyan-600 rounded-xl p-3">
+                        <div class="bg-cyan-700 text-white text-center rounded-lg py-1 font-bold mb-2">${role}</div>
+                        <p class="text-xs text-gray-500 mb-1">الاسم:</p><div class="dotted-line"></div>
+                        <p class="text-xs text-gray-500 mb-1 mt-2">المهام:</p><div class="dotted-line"></div><div class="dotted-line mt-1"></div>
+                    </div>`).join('')}
+                </div>
+                <div class="border-2 border-cyan-600 rounded-xl p-3 mt-4">
+                    <div class="bg-cyan-700 text-white text-center rounded-lg py-1 font-bold mb-2">ملخص عمل المجموعة</div>
+                    <div class="dotted-line"></div><div class="dotted-line mt-2"></div><div class="dotted-line mt-2"></div>
+                </div>`;
+            } else if (name === 'العصف الذهني') {
+                html = `
+                <div class="text-center text-sm text-gray-500 mb-3">اكتبي أفكارك خارج الصندوق! 💡</div>
+                <div class="flex justify-center mb-4">
+                    <div class="border-4 border-cyan-700 rounded-2xl px-8 py-4 bg-cyan-50 font-bold text-cyan-800 text-lg">الفكرة الرئيسية<div class="dotted-line mt-1"></div></div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    ${[1,2,3,4,5,6].map(i => `<div class="bubble">فكرة ${i}</div>`).join('')}
+                </div>
+                <div class="mt-4 border-2 border-cyan-600 rounded-xl p-3">
+                    <div class="font-semibold text-cyan-800 mb-2">✨ أفضل فكرة وسبب اختيارها:</div>
+                    <div class="dotted-line"></div><div class="dotted-line mt-2"></div>
+                </div>`;
+            } else if (name === 'الاستقصاء') {
+                html = `
+                <div class="space-y-3">
+                    ${[
+                        {n:'١',t:'السؤال / المشكلة',icon:'❓'},
+                        {n:'٢',t:'الفرضية (توقعي)',icon:'🤔'},
+                        {n:'٣',t:'جمع البيانات والأدلة',icon:'📊'},
+                        {n:'٤',t:'التحليل والتفسير',icon:'🔬'},
+                        {n:'٥',t:'النتيجة والاستنتاج',icon:'✅'}
+                    ].map(s => `
+                    <div class="step-box">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-cyan-700 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">${s.n}</span>
+                            <span class="font-semibold text-cyan-800">${s.icon} ${s.t}</span>
+                        </div>
+                        <div class="dotted-line"></div><div class="dotted-line mt-1"></div>
+                    </div>`).join('')}
+                </div>`;
+            } else if (name === 'قراءة الصور') {
+                html = `
+                <div class="border-2 border-cyan-600 rounded-xl p-3 mb-4">
+                    <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl h-40 flex items-center justify-center text-gray-400 text-lg">📷 الصق الصورة هنا</div>
+                </div>
+                <div class="space-y-3">
+                    ${[
+                        {q:'ماذا تشاهدين في الصورة؟', icon:'👁️'},
+                        {q:'ما الألوان والأشكال البارزة؟', icon:'🎨'},
+                        {q:'ما الرسالة التي توصلها الصورة؟', icon:'💭'},
+                        {q:'ما علاقة الصورة بالدرس؟', icon:'🔗'},
+                        {q:'رأيك الشخصي في الصورة:', icon:'⭐'}
+                    ].map(item => `
+                    <div class="step-box">
+                        <p class="font-semibold text-cyan-800 mb-1">${item.icon} ${item.q}</p>
+                        <div class="dotted-line"></div><div class="dotted-line mt-1"></div>
+                    </div>`).join('')}
+                </div>`;
+            }
+            container.innerHTML = html;
+        }
+    </script>
+ </body>
+</html>
